@@ -39,6 +39,9 @@ function onGalleryItemClick(evt) {
 
 instance.show()
 
-    const visible = basicLightbox.visible()
-    console.log(visible);
+document.addEventListener("keydown", evt => {   
+    instance.close();
+  });
 }
+
+    
