@@ -8,7 +8,7 @@ const galleryContainer = document.querySelector('.gallery')
 const galleryMarkup = createGalleryItem(galleryItems);
 galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
-galleryContainer.addEventListener('click', onGalleryItemClick);
+galleryContainer.addEventListener('click', onPreventDefault);
 
 function createGalleryItem(galleryItems) {
     return galleryItems.map(({preview, original, description}) => {
@@ -22,15 +22,9 @@ function createGalleryItem(galleryItems) {
     }).join('');
 
 }
- 
-function onGalleryItemClick(evt) {
-    if (!evt.target.classList.contains('gallery__image')) {
-    return;
-    };
+function onPreventDefault(evt) {
     evt.preventDefault();
-    const imgGalleryOriginal = (evt.target.parentNode.href);
-    console.log(imgGalleryOriginal);
-
-     const lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250 });
-     lightbox.show();
 }
+
+ new SimpleLightbox('.gallery__item a', {captionsData: 'alt', captionDelay: 250 });
+    
